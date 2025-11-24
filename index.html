@@ -1,0 +1,562 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.2">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Finder Portfolio App&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Load Tailwind CSS via CDN --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Load React and ReactDOM via CDN --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Load Babel for client-side JSX compilation --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://unpkg.com/@babel/standalone/babel.min.js"&gt;&lt;/script&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Base styles for the Mac OS-like interface */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #f3f4f6;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>overflow: hidden; /* Prevent body scroll */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>min-height: 100vh;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 100vw;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="root" class="min-h-screen w-full flex items-center justify-center"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;!-- React application will be mounted here --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script type="text/babel"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// Import necessary icons globally. Since we are using CDN, we access them directly</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// via the global 'lucide' object, which is assumed to be available or added manually</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// Since we cannot load lucide-react via CDN in a simple way, we will use a simple mapping</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// and rely on inline SVG or emojis for visual robustness.</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- Icon Definitions (Using simplified SVG/Text since Lucide is hard to CDN) ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const IconMap = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Folder: (props) =&gt; &lt;svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/&gt;&lt;/svg&gt;,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>User: (props) =&gt; &lt;svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/&gt;&lt;circle cx="12" cy="7" r="4"/&gt;&lt;/svg&gt;,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Mail: (props) =&gt; &lt;svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;rect width="20" height="16" x="2" y="4" rx="2"/&gt;&lt;path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/&gt;&lt;/svg&gt;,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Image: (props) =&gt; &lt;svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;rect width="18" height="18" x="3" y="3" rx="2"/&gt;&lt;circle cx="8.5" cy="8.5" r="1.5"/&gt;&lt;path d="m21 15-5.5-5.5L7 21"/&gt;&lt;/svg&gt;,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Film: (props) =&gt; &lt;svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;rect width="18" height="18" x="3" y="3" rx="2"/&gt;&lt;path d="M7 3v18"/&gt;&lt;path d="M17 3v18"/&gt;&lt;path d="M7 12h10"/&gt;&lt;path d="M7 7h10"/&gt;&lt;path d="M7 17h10"/&gt;&lt;/svg&gt;,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Sparkles: (props) =&gt; &lt;svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;path d="M9.93 17.58A5 5 0 0 1 12 16c2.2 0 4-1.8 4-4s-1.8-4-4-4a5 5 0 0 1-2.07 1.92"/&gt;&lt;path d="m16 2.5 1.5 1.5M19 6l1.5-1.5M21.5 9l-1.5 1.5M21 13.5l-1.5-1.5M16 16l1.5 1.5M19 19.5l1.5-1.5M21.5 15l-1.5-1.5M2.5 9l1.5 1.5M6 6l-1.5-1.5M3 13.5l1.5-1.5M12 2v2M2 12h2M12 20v2M20 12h2"/&gt;&lt;/svg&gt;,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>X: (props) =&gt; &lt;svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;path d="M18 6 6 18"/&gt;&lt;path d="m6 6 12 12"/&gt;&lt;/svg&gt;,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>ChevronLeft: (props) =&gt; &lt;svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;path d="m15 18-6-6 6-6"/&gt;&lt;/svg&gt;,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Minus: (props) =&gt; &lt;svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;path d="M5 12h14"/&gt;&lt;/svg&gt;,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Maximize: (props) =&gt; &lt;svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;path d="M8 3H5a2 2 0 0 0-2 2v3"/&gt;&lt;path d="M21 8V5a2 2 0 0 0-2-2h-3"/&gt;&lt;path d="M3 16v3a2 2 0 0 0 2 2h3"/&gt;&lt;path d="M16 21h3a2 2 0 0 0 2-2v-3"/&gt;&lt;/svg&gt;,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Glasses: (props) =&gt; &lt;svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;circle cx="6.5" cy="15.5" r="3.5"/&gt;&lt;circle cx="17.5" cy="15.5" r="3.5"/&gt;&lt;path d="M10 12h4"/&gt;&lt;path d="M15 15.5H22"/&gt;&lt;path d="M2 15.5h9"/&gt;&lt;/svg&gt;,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Layers: (props) =&gt; &lt;svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;path d="m12.83 2.15-.3.6a.46.46 0 0 1-.76 0l-.3-.6a.46.46 0 0 0-.76 0l-.3.6a.46.46 0 0 1-.76 0l-.3-.6a.46.46 0 0 0-.76 0L2 12l2.35 4.7a.46.46 0 0 0 .8.04l.3-.6a.46.46 0 0 1 .76 0l.3.6a.46.46 0 0 0 .76 0l.3-.6a.46.46 0 0 1 .76 0l.3.6a.46.46 0 0 0 .76 0l.3-.6a.46.46 0 0 1 .76 0l.3.6a.46.46 0 0 0 .76 0l.3-.6a.46.46 0 0 1 .76 0l.3.6a.46.46 0 0 0 .76 0l.3-.6a.46.46 0 0 1 .76 0l.3.6a.46.46 0 0 0 .76 0l.3-.6a.46.46 0 0 1 .76 0l.3.6a.46.46 0 0 0 .76 0l.3-.6a.46.46 0 0 1 .76 0L22 12l-2.35-4.7a.46.46 0 0 0-.8-.04l-.3.6a.46.46 0 0 1-.76 0l-.3-.6a.46.46 0 0 0-.76 0l-.3.6a.46.46 0 0 1-.76 0l-.3-.6a.46.46 0 0 0-.76 0l-.3.6a.46.46 0 0 1-.76 0l-.3-.6a.46.46 0 0 0-.76 0l-.3.6a.46.46 0 0 1-.76 0l-.3-.6a.46.46 0 0 0-.76 0l-.3.6a.46.46 0 0 1-.76 0l-.3-.6a.46.46 0 0 0-.76 0l-.3.6a.46.46 0 0 1-.76 0l-.3-.6a.46.46 0 0 0-.76 0Z"/&gt;&lt;/svg&gt;,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Box: (props) =&gt; &lt;svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;path d="M21 8a2 2 0 0 0-1-1.73l-7-4.14a2 2 0 0 0-2 0l-7 4.14A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4.14a2 2 0 0 0 2 0l7-4.14a2 2 0 0 0 1-1.73z"/&gt;&lt;path d="m3.3 7 8.7 5 8.7-5M12 22V12"/&gt;&lt;/svg&gt;,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>PaintBucket: (props) =&gt; &lt;svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;path d="M19 11h-1a1 1 0 0 0-1 1v4a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-4a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h4a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h4a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1zM11 5V3m5 0V3m-4 5h-1"/&gt;&lt;path d="M12 3h1.4c.48 0 .96.06 1.4.18.9.23 1.63.95 1.86 1.86.12.44.18.92.18 1.4v.4M2.37 12.55l7.98-7.98M11 4h2"/&gt;&lt;/svg&gt;,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Music: (props) =&gt; &lt;svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/&gt;&lt;path d="M22 10V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4"/&gt;&lt;path d="M12 2v20"/&gt;&lt;path d="M4 15h16"/&gt;&lt;path d="M4 10h16"/&gt;&lt;/svg&gt;,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Camera: (props) =&gt; &lt;svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/&gt;&lt;circle cx="12" cy="13" r="3"/&gt;&lt;/svg&gt;,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const { useState, useEffect, useCallback } = React;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- CONFIGURATION DATA ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const NAV_ITEMS = [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>{ id: 'projects', name: 'Projects', icon: IconMap.Folder, color: 'text-blue-500' },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>{ id: 'about', name: 'About Me', icon: IconMap.User, color: 'text-green-500' },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>{ id: 'contact', icon: IconMap.Mail, color: 'text-purple-500', name: 'Contact' },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const PROJECTS_DATA = [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>{ id: 'sculpture', title: 'Sculpture', icon: IconMap.Image, color: 'text-yellow-500',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>items: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>{<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: 'Terra Cotta Study',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>preview: 'https://ahmedjamalm.github.io/portfolio-media/terra-cotta-study.jpg',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>content: 'A deep dive into classical clay modeling techniques, focusing on texture and form. This piece challenges traditional boundaries by integrating digital planning into the physical modeling process.',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaType: 'image',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaUrl: 'https://ahmedjamalm.github.io/portfolio-media/terra-cotta-study.jpg'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>{<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: 'Wireframe Abstraction',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>preview: 'https://placehold.co/600x400/F97316/FFFFFF?text=Sculpture+B',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>content: 'Minimalist piece exploring positive and negative space using industrial steel wires. The final presentation involves custom lighting to cast complex shadows.',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaType: 'image',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaUrl: 'https://placehold.co/800x600/F97316/FFFFFF?text=FINAL+IMAGE+B'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>{<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: 'My First Upload',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>preview: 'https://placehold.co/600x400/000000/FFFFFF?text=YOUR+PREVIEW+IMAGE',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>content: 'This project demonstrates the successful integration of an externally hosted asset into the portfolio structure.',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaType: 'image',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaUrl: 'https://placehold.co/800x600/000000/FFFFFF?text=YOUR+FULL+IMAGE'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>{ id: 'ceramics', title: 'Ceramics', icon: IconMap.PaintBucket, color: 'text-orange-500',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>items: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>{<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: 'Glaze Experiments',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>preview: 'https://placehold.co/600x400/F97316/FFFFFF?text=CERAMICS+PREVIEW',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>content: 'Exploring temperature effects and mineral pigments on stoneware, focusing on crystalline glazes. This project emphasizes material science in art.',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaType: 'image',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaUrl: 'https://placehold.co/800x600/F97316/FFFFFF?text=FINAL+CERAMICS+WORK'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>{ id: 'digital_painting', title: 'Digital Painting', icon: IconMap.PaintBucket, color: 'text-blue-500',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>items: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>name: 'Aurora Borealis Study',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>preview: 'https://your-image-host.com/digital-painting-aurora-small.jpg',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>content: 'A vibrant digital landscape focusing on light and atmosphere, painted using Procreate/Photoshop layers. Explores volumetric lighting techniques.',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>mediaType: 'image',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>mediaUrl: 'https://your-image-host.com/digital-painting-aurora-large.jpg'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>name: 'Portrait of Jane Doe',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>preview: 'https://your-image-host.com/digital-portrait-small.jpg',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>content: 'Hyper-realistic portraiture focused on subtle skin tone variations and hair rendering. A year-long study in digital texture.',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>mediaType: 'image',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>mediaUrl: 'https://your-image-host.com/digital-portrait-large.jpg'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>{ id: 'video', title: 'Video', icon: IconMap.Film, color: 'text-red-500',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>items: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>{<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: 'Urban Flow Short',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>preview: 'https://placehold.co/600x400/EF4444/FFFFFF?text=Video+A',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>content: 'A kinetic montage of city life, using fast cuts and high contrast filters. This was a challenging project focused on timing and audio design.',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaType: 'video',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaUrl: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ'<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>{<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: 'Conceptual Loop',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>preview: 'https://placehold.co/600x400/6366F1/FFFFFF?text=Video+B',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>content: 'An infinite video loop studying repetition and gradual decay of visual information. This project was first exhibited in the 2024 Digital Art Expo.',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaType: 'video',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaUrl: 'https://www.youtube-nocookie.com/embed/x-0k0204t3o'<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>{ id: 'photo', title: 'Photography', icon: IconMap.Camera, color: 'text-teal-500',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>items: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: 'Street Series: NYC',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>preview: 'https://placehold.co/600x400/0D9488/FFFFFF?text=PHOTO+PREVIEW',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>content: 'A documentary series capturing fleeting moments of urban life, emphasizing contrast and solitude in crowded spaces.',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaType: 'image',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaUrl: 'https://placehold.co/800x600/0D9488/FFFFFF?text=FINAL+PHOTO+WORK'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: 'Dandelion Macro Study',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>preview: 'https://ahmedjamalm.github.io/portfolio-media/dandelion_prvw',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>content: 'An extreme close-up photograph capturing the delicate structures and texture of a dandelion head, highlighting focus stacking and natural light techniques.',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaType: 'image',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaUrl: 'https://ahmedjamalm.github.io/portfolio-media/dandelion_prvw'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>{ id: 'animation', title: 'Animation', icon: IconMap.Sparkles, color: 'text-pink-500',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>items: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>{<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: 'Procedural Grass',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>preview: 'https://placehold.co/600x400/EC4899/FFFFFF?text=Animation+A',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>content: 'VFX experiment on procedural generation of natural elements using Blender nodes. The goal was photo-realism without manual asset placement.',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaType: 'image',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaUrl: 'https://placehold.co/800x600/EC4899/FFFFFF?text=FINAL+RENDER'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>{<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: 'Infinite Loop Prison',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>preview: 'https://ahmedjamalm.github.io/portfolio-media/infinite-loop-thumbnail.jpg',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>content: 'A short animated film exploring a specific narrative and animation technique. Playing via Vimeo.',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaType: 'video',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaUrl: 'https://player.vimeo.com/video/1140064268?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;loop=1',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>aspectRatio: '66.67%'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>{ id: 'virtual_reality', title: 'Virtual Reality', icon: IconMap.Glasses, color: 'text-indigo-500',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>items: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: 'The Infinite Loop VR',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>preview: 'https://placehold.co/600x400/6366F1/FFFFFF?text=VR+PREVIEW',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>content: 'An interactive VR experience exploring non-Euclidean space and sensory overload. Project exhibited at the Digital Futures Lab.',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaType: 'video',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaUrl: 'https://www.youtube-nocookie.com/embed/S_T1w_G8lSg'<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>{ id: 'augmented_reality', title: 'Augmented Reality', icon: IconMap.Layers, color: 'text-cyan-500',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>items: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: 'AR Geo-Cache Art',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>preview: 'https://placehold.co/600x400/06B6D4/FFFFFF?text=AR+PREVIEW',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>content: 'Public art installation utilizing ARKit/ARCore, placing hidden digital sculptures in city parks accessible only via a smartphone camera.',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaType: 'image',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaUrl: 'https://placehold.co/800x600/06B6D4/FFFFFF?text=AR+MOCKUP'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>{ id: 'models', title: '3D Models', icon: IconMap.Box, color: 'text-lime-500',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>items: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: 'Archived Assets Pack',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>preview: 'https://placehold.co/600x400/84CC16/FFFFFF?text=MODEL+PREVIEW',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>content: 'A collection of high-poly and low-poly assets created for game development and cinematics, demonstrating proficiency in Maya and Substance Painter.',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaType: 'image',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaUrl: 'https://placehold.co/800x600/84CC16/FFFFFF?text=MODEL+SHEET'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>{ id: 'music', title: 'Music/Sound', icon: IconMap.Music, color: 'text-fuchsia-500',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>items: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: 'Generative Soundscapes',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>preview: 'https://placehold.co/600x400/E879F9/FFFFFF?text=MUSIC+PREVIEW',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>content: 'An experimental album exploring generative music and ambient composition using Max/MSP. The final work is an infinitely looping audio file.',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaType: 'video',<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mediaUrl: 'https://www.youtube-nocookie.com/embed/1O0E-w3sB2c'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const GENERAL_CONTENT = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>'about': (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="p-8 space-y-4 bg-gray-50 rounded-lg shadow-inner"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h3 className="text-xl font-semibold text-gray-800 border-b pb-2"&gt;About Ahmed Malik&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p className="text-gray-600"&gt;Ahmed Malik is a multidisciplinary artist and technologist exploring the boundaries between the digital and the physical.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p className="text-gray-600"&gt;For collaboration inquiries, please use the contact link below.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>'contact': (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="p-8 space-y-4 bg-gray-50 rounded-lg shadow-inner"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h3 className="text-xl font-semibold text-gray-800 border-b pb-2"&gt;System Access Protocol&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p className="text-gray-600"&gt;Email: &lt;span className="font-mono text-blue-600"&gt;contact@digitalvoid.art&lt;/span&gt;&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p className="text-gray-600"&gt;Social: &lt;span className="font-mono text-blue-600"&gt;@dorksense_art&lt;/span&gt; (links not active in this simulation)&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button className="mt-4 px-4 py-2 bg-purple-500 text-white font-bold rounded-md hover:bg-purple-600 transition duration-150"&gt;Send Message Request&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const FolderIcon = ({ folder, onMouseEnter, onMouseLeave, onClick }) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const IconComponent = folder.icon;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>return (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>className="flex flex-col items-center p-3 w-28 cursor-pointer hover:bg-blue-100/70 rounded-lg transition-colors duration-150"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>onMouseEnter={() =&gt; onMouseEnter(folder)}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>onMouseLeave={onMouseLeave}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>onClick={onClick}<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;IconComponent className={`w-12 h-12 ${folder.color} drop-shadow-md`} strokeWidth={1.5}/&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span className="text-xs font-medium text-center mt-1 p-0.5 bg-white/70 rounded-sm"&gt;{folder.title}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const FinderWindow = ({ setActiveView, activeNav, setActiveNav, activeProjectSubfolder, setActiveProjectSubfolder }) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const [hoveredProject, setHoveredProject] = useState(null);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const activeFolder = PROJECTS_DATA.find(f =&gt; f.id === activeProjectSubfolder);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const activeProjectItems = activeFolder ? activeFolder.items : [];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const getProjectDetail = useCallback(() =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (!hoveredProject) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>return { title: 'Select a Project', content: 'Hover over a file icon in the right column to view its preview and description here.' };</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>title: hoveredProject.name,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>content: (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="space-y-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;img<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>src={hoveredProject.preview}<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>alt={hoveredProject.name}<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>className="w-full h-auto rounded-lg shadow-md border-2 border-gray-300"<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>onError={(e) =&gt; { e.target.onerror = null; e.target.src="https://placehold.co/600x400/FF0000/FFFFFF?text=PREVIEW+ERROR" }}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>/&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p className="text-sm text-gray-700"&gt;{hoveredProject.content}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}, [hoveredProject]);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const detailContent = getProjectDetail();</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>return (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="w-full h-full bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden border border-gray-300"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="flex items-center p-2 border-b bg-gray-100"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="flex space-x-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="w-3 h-3 bg-red-500 rounded-full cursor-pointer hover:bg-red-600" onClick={() =&gt; setActiveView('closed')}&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="w-3 h-3 bg-yellow-500 rounded-full cursor-pointer hover:bg-yellow-600"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="w-3 h-3 bg-green-500 rounded-full cursor-pointer hover:bg-green-600"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="flex-1 text-center text-sm font-semibold text-gray-700"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{activeNav === 'projects' ? `Projects &gt; ${activeFolder?.title || ''}` : activeNav.charAt(0).toUpperCase() + activeNav.slice(1)}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="flex space-x-2 opacity-0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;IconMap.Minus className="w-4 h-4 text-gray-500" /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;IconMap.Maximize className="w-4 h-4 text-gray-500" /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;IconMap.X className="w-4 h-4 text-gray-500" /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="flex-1 flex overflow-hidden"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="w-56 bg-gray-200 border-r border-gray-300 p-2 space-y-1 overflow-y-auto"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;h4 className="text-xs font-bold text-gray-500 uppercase px-2 py-1 mt-2"&gt;Favorites&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{NAV_ITEMS.map(item =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>const Icon = item.icon;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>return (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>key={item.id}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>className={`flex items-center p-2 rounded-lg cursor-pointer transition-colors duration-150 ${activeNav === item.id ? 'bg-blue-500 text-white shadow-md' : 'hover:bg-gray-300 text-gray-700'}`}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>onClick={() =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>setActiveNav(item.id);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>setHoveredProject(null);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>}}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;Icon className={`w-5 h-5 mr-3 ${activeNav === item.id ? 'text-white' : item.color}`} /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;span className="font-medium"&gt;{item.name}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>})}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="w-64 bg-white border-r border-gray-300 p-4 overflow-y-auto"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{activeNav === 'projects' ? (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="space-y-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;h4 className="text-xs font-bold text-gray-500 uppercase"&gt;Sub-Projects&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>{PROJECTS_DATA.map(folder =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>const Icon = folder.icon;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>return (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;div</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>key={folder.id}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>className={`flex items-center p-2 rounded-lg cursor-pointer transition-colors duration-150 ${activeProjectSubfolder === folder.id ? 'bg-blue-100' : 'hover:bg-gray-100'}`}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>onClick={() =&gt; setActiveProjectSubfolder(folder.id)}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;Icon className={`w-5 h-5 mr-3 ${folder.color}`} /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;span className="font-medium"&gt;{folder.title}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;IconMap.ChevronLeft className="w-4 h-4 ml-auto text-gray-500 rotate-180" /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>})}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>) : (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="p-4 pt-10"&gt;{GENERAL_CONTENT[activeNav]}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>)}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="flex-1 bg-white p-4 flex flex-col overflow-y-auto"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{activeNav === 'projects' ? (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="flex flex-wrap gap-4 mb-6"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>{activeProjectItems.map((item, index) =&gt; (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;FolderIcon</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>key={index}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>folder={{ title: item.name, icon: item.mediaType === 'video' ? IconMap.Film : IconMap.Image, color: 'text-gray-700' }}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>onMouseEnter={() =&gt; setHoveredProject(item)}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>onMouseLeave={() =&gt; setHoveredProject(null)}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                                </span>onClick={() =&gt; setActiveView({ type: 'project', data: item })}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>/&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>))}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;h4 className="text-xs font-bold text-gray-500 uppercase border-b pb-1 mb-4"&gt;File Preview&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="flex-1"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>{typeof detailContent.content === 'string' ? (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;p className="text-gray-500 italic mt-8 text-center"&gt;{detailContent.content}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>) : (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>detailContent.content</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>)}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>) : (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="p-4 pt-10"&gt;{GENERAL_CONTENT[activeNav]}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>)}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const ProjectDetailPage = ({ project, setActiveView }) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const MediaRenderer = ({ project }) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (project.mediaType === 'video') {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const aspectRatio = project.aspectRatio || '56.25%';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>return (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="relative rounded-lg overflow-hidden shadow-xl" style={{ paddingTop: aspectRatio }}&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;iframe</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>className="absolute top-0 left-0 w-full h-full"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>src={project.mediaUrl}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>title={`Video: ${project.name}`}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>referrerPolicy="strict-origin-when-cross-origin"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>allowFullScreen</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>frameBorder="0"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&gt;&lt;/iframe&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;img<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>src={project.mediaUrl || project.preview}<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>alt={project.name}<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>className="w-full h-auto rounded-lg shadow-xl"<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>onError={(e) =&gt; { e.target.onerror = null; e.target.src="https://placehold.co/800x600/FF0000/FFFFFF?text=MEDIA+LOAD+ERROR" }}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>/&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>return (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="p-8 w-full h-full bg-gray-100 rounded-xl shadow-2xl flex flex-col overflow-y-auto"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;header className="flex items-center justify-between pb-4 border-b mb-6"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;button<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>onClick={() =&gt; setActiveView('finder')}<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>className="flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-150"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;IconMap.ChevronLeft className="w-5 h-5 mr-1" /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>Back to Finder</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h1 className="text-3xl font-bold text-gray-800"&gt;{project.name}&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="w-24"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/header&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="grid md:grid-cols-2 gap-8 flex-1"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="md:col-span-1"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;h2 className="text-xl font-semibold mb-3 border-l-4 border-blue-500 pl-2"&gt;Visual Showcase&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;MediaRenderer project={project} /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="md:col-span-1 space-y-6"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;h2 className="text-xl font-semibold mb-3 border-l-4 border-blue-500 pl-2"&gt;Project Description&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p className="text-gray-700 leading-relaxed text-lg"&gt;{project.content}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="bg-white p-4 rounded-md shadow-inner border"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h3 className="font-bold text-gray-800"&gt;Metadata&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p className="text-sm text-gray-600"&gt;Type: {project.name.includes('Study') || project.name.includes('Experiments') ? 'Conceptual' : 'Production'}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p className="text-sm text-gray-600"&gt;Category: {project.name.includes('VR') || project.name.includes('AR') ? 'Interactive' : 'Media'}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const App = () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const [activeView, setActiveView] = useState('finder');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const [activeNav, setActiveNav] = useState('projects');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const [activeProjectSubfolder, setActiveProjectSubfolder] = useState(PROJECTS_DATA[0].id);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const [isDragging, setIsDragging] = useState(false);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const [position, setPosition] = useState({ x: 50, y: 50 });</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const [offset, setOffset] = useState({ x: 0, y: 0 });</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const handleMouseDown = (e) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Prevent drag on interactive elements (close/minimize buttons, buttons, links, clickable folders/icons)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (e.target.closest('.w-3.h-3, button, a, .cursor-pointer')) return;<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Check if the click is near the top (title bar) to initiate drag</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const rect = e.currentTarget.getBoundingClientRect();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (e.clientY - rect.top &gt; 40) return;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>setIsDragging(true);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Calculate the offset from the mouse position to the element's position</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>setOffset({ x: e.clientX - position.x, y: e.clientY - position.y });</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const handleMouseMove = useCallback((e) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (!isDragging) return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Update position based on current mouse location and initial offset</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>setPosition({ x: e.clientX - offset.x, y: e.clientY - offset.y });</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}, [isDragging, offset]);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const handleMouseUp = useCallback(() =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>setIsDragging(false);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}, []);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>useEffect(() =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Attach global listeners for mouse move and up to handle dragging outside the window</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (isDragging) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>window.addEventListener('mousemove', handleMouseMove);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>window.addEventListener('mouseup', handleMouseUp);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>window.removeEventListener('mousemove', handleMouseMove);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>window.removeEventListener('mouseup', handleMouseUp);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Cleanup function</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>window.removeEventListener('mousemove', handleMouseMove);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>window.removeEventListener('mouseup', handleMouseUp);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}, [isDragging, handleMouseMove, handleMouseUp]);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const isWindowOpen = activeView === 'finder' || (typeof activeView === 'object' &amp;&amp; activeView.type === 'project');</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!isWindowOpen) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="bg-gray-100 min-h-screen p-4 flex items-center justify-center font-sans"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="fixed top-0 left-0 w-full h-full bg-gray-300 pointer-events-none z-0"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="text-gray-700 p-8 bg-white rounded-lg shadow-lg"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p&gt;Window is closed. To re-open the portfolio, click the button below.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;button<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>onClick={() =&gt; setActiveView('finder')}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>className="mt-4 px-4 py-2 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600 transition duration-150"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>Re-Open Portfolio</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>return (</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="bg-gray-100 min-h-screen p-4 flex items-center justify-center font-sans overflow-hidden w-full h-full"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="fixed top-0 left-0 w-full h-full bg-gray-300 pointer-events-none z-0"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>// Draggable window wrapper</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>className={`absolute transition-all duration-300 ease-in-out shadow-2xl z-10<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>${activeView === 'finder' ? 'w-[90%] max-w-5xl h-[70vh] min-h-[500px]' : 'w-full h-full top-0 left-0'}`}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>style={activeView === 'finder' ? { top: position.y + 'px', left: position.x + 'px' } : {}}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>className="w-full h-full"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>// Attach drag events to the outer container for the draggable 'finder' view only</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>onMouseDown={activeView === 'finder' ? handleMouseDown : undefined}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>style={{ cursor: activeView === 'finder' ? (isDragging ? 'grabbing' : 'grab') : 'default' }}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{activeView === 'finder' &amp;&amp;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;FinderWindow<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>setActiveView={setActiveView}<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>activeNav={activeNav}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>setActiveNav={setActiveNav}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>activeProjectSubfolder={activeProjectSubfolder}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>setActiveProjectSubfolder={setActiveProjectSubfolder}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>/&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>{activeView.type === 'project' &amp;&amp; &lt;ProjectDetailPage project={activeView.data} setActiveView={setActiveView} /&gt;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- REACT INITIALIZATION (CDN Style) ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const container = document.getElementById('root');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (container) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Use ReactDOM.createRoot from the global scope</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const root = ReactDOM.createRoot(container);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>root.render(&lt;App /&gt;);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>console.error("Failed to find the root element.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
